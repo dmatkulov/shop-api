@@ -20,10 +20,10 @@ productsRouter.post('/', imagesUpload.single('image'), async (req, res) => {
     title: req.body.title,
     price: parseFloat(req.body.price),
     description: req.body.description,
-    image: req.file ? req.file.fieldname : null,
+    image: req.file ? req.file.filename : null,
   };
   
-  const newProduct = await fileDb.addItem(product);
+  const newProduct = await fileDb.addItem(product)
   res.send(newProduct);
 });
 
